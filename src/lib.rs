@@ -62,7 +62,6 @@
 //!
 //!     loop {}
 //! }
-#![no_std]
 
 mod read;
 pub use read::{Delay, DhtError, InputOutputPin};
