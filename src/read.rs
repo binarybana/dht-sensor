@@ -50,14 +50,19 @@ where
     D: Delay,
 {
     pin.set_low().ok();
+    println!("Set low");
     delay.delay_ms(18_u8);
     pin.set_high().ok();
+    println!("Set high");
     delay.delay_us(48_u8);
     while pin.is_low()? {}
+    println!("Pin low");
     while pin.is_high()? {}
+    println!("Pin high");
     let mut data = [0; 4];
     for b in data.iter_mut() {
         *b = read_byte(delay, pin)?;
+        println!("Read byte");
     }
     let checksum = read_byte(delay, pin)?;
     if data.iter().sum::<u8>() != checksum {
