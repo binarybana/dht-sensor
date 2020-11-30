@@ -57,21 +57,21 @@ where
 
     handle.write_all(b"hello world").unwrap();
     pin.set_low().ok();
-    handle.write_all("Pin has been set low").unwrap();
+    handle.write_all(b"Pin has been set low").unwrap();
     handle.flush().unwrap();
     // delay.delay_ms(18_u8);
     delay.delay_ms(30_u8);
     pin.set_high().ok();
-    handle.write_all("Pin has been set high").unwrap();
+    handle.write_all(b"Pin has been set high").unwrap();
     handle.flush().unwrap();
     // delay.delay_us(48_u8);
     delay.delay_us(40_u8);
     while pin.is_low()? {}
-    handle.write_all("Pin is no longer low").unwrap();
+    handle.write_all(b"Pin is no longer low").unwrap();
     handle.flush().unwrap();
     while pin.is_high()? {}
     handle
-        .write_all("Pin is no longer high, ready to start reading")
+        .write_all(b"Pin is no longer high, ready to start reading")
         .unwrap();
     handle.flush().unwrap();
     let mut data = [0; 4];
