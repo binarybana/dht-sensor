@@ -24,7 +24,8 @@ where
     D: DelayUs<u8>,
 {
     while pin.is_low()? {}
-    delay.delay_us(35u8);
+    // delay.delay_us(35u8);
+    delay.delay_us(30u8);
     let high = pin.is_high()?;
     while pin.is_high()? {}
     Ok(high)
@@ -65,7 +66,7 @@ where
         println!("Read byte");
     }
     let checksum = read_byte(delay, pin)?;
-    if data.iter().sum::<u8>() != checksum {
+    if data.iter().fold(0u8, |acc, x| acc.wrapping_add(*x)) != checksum {
         Err(DhtError::ChecksumMismatch)
     } else {
         Ok(data)
