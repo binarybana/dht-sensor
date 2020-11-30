@@ -77,7 +77,7 @@ where
     let mut data = [0; 4];
     for b in data.iter_mut() {
         *b = read_byte(delay, pin)?;
-        handle.write_all("read byte").unwrap();
+        handle.write_all(b"read byte").unwrap();
         handle.flush().unwrap();
     }
     let checksum = read_byte(delay, pin)?;
