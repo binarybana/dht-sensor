@@ -25,7 +25,8 @@ where
 {
     while pin.is_low()? {}
     // delay.delay_us(35u8);
-    delay.delay_us(30u8);
+    // delay.delay_us(30u8);
+    delay.delay_us(100u8);
     let high = pin.is_high()?;
     while pin.is_high()? {}
     Ok(high)
